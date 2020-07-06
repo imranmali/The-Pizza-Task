@@ -1,7 +1,8 @@
-package com.pizzaordering;
+package com.pizzaordering.controller;
 
+import com.pizzaordering.Application;
 import com.pizzaordering.config.PropertySourceResolver;
-import com.pizzaordering.model.Item;
+import com.pizzaordering.entity.Item;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,13 +41,9 @@ public class ItemControllerIntegrationTest {
 
 	@Test
 	public void testCreateItem() {
-		Item item = new Item();
-		item.setTitle("Chicken Pizza");
-		item.setDescription("Chicken pizza desc");
-		item.setPrice(12);
-		item.setId(1);
 
-		ResponseEntity<Item> postResponse = restTemplate.postForEntity(getRootUrl() + "/item", item, Item.class);
+
+		ResponseEntity<Item> postResponse = restTemplate.postForEntity(getRootUrl() + "/item", getItemObject(), Item.class);
 		assertNotNull(postResponse);
 		assertNotNull(postResponse.getBody());
 	}
@@ -97,5 +94,14 @@ public class ItemControllerIntegrationTest {
 		} catch (final HttpClientErrorException e) {
 			assertEquals(e.getStatusCode(), HttpStatus.NOT_FOUND);
 		}
+	}
+
+	public static Item getItemObject(){
+		Item item = new Item();
+		item.setTitle("Chicken Pizza");
+		item.setDescription("Chicken pizza desc");
+		item.setPrice(12);
+		item.setId(1);
+		return item;
 	}
 }
