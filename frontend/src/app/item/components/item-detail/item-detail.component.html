@@ -1,0 +1,22 @@
+<div class="wrapper">
+  <!-- <img [src]="item.images[0]"
+       [alt]="item.title"
+       class="image"> -->
+  <div class="slide">
+    <slideshow [imageUrls]="item.images"
+               [backgroundSize]="'contain'"></slideshow>
+  </div>
+  <div class="text">
+    <h3>Name: {{ item.title }}</h3>
+    <h3>Price: {{ item.price | currency: 'EUR': 'symbol-narrow' : '1.0' }}</h3>
+    <p>Category: {{ item.category.name }}</p>
+    <p>Description: {{ item.description }}</p>
+    <div class="footer">
+      <app-number-picker [default]="1"
+                         (valueChange)="onAmountChange($event)"></app-number-picker>
+      <button mat-raised-button
+              color="accent"
+              (click)="onAddToCart()">Add to cart</button>
+    </div>
+  </div>
+</div>
