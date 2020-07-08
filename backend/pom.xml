@@ -6,7 +6,7 @@
 
 	<groupId>com.pizzaordering</groupId>
 	<artifactId>the-pizza-task</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0-alpha</version>
 	<packaging>jar</packaging>
 
 	<name>The Pizza Task</name>
