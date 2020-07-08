@@ -1,0 +1,12 @@
+.item-container {
+  display: grid;
+  grid-gap: 15px;
+  grid-template-columns: repeat(auto-fit, 300px);
+  justify-content: center;
+  justify-items: center;
+}
+
+.wrapper {
+  width: 90%;
+  margin: auto;
+}

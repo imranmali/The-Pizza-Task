@@ -1,0 +1,9 @@
+<mat-sidenav-container>
+  <mat-sidenav-content>
+    <app-header [cartItem]="cartItems$ | async"
+                [ngClass]="{'width-full': isWidthFull, 'width-with-sidenav': isWidthWithSidenav}"
+                (cartBtnClick)="cartClick()"
+                (homeBtnClick)="homeClick()"></app-header>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
