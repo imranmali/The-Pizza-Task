@@ -8,6 +8,10 @@ const routes: Routes = [
     {
       path: '',
       loadChildren: './item/item.module#ItemModule'
+    },
+    {
+      path: 'cart',
+      loadChildren: './cart/cart.module#CartModule'
     }
    
   ]),

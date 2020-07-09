@@ -1,0 +1,19 @@
+<div class="wrapper">
+  <h2>Your Cart</h2>
+  <div *ngIf="dataSource$  as dataSource">
+    <div *ngIf="dataSource.length > 0; else empty">
+      <app-cart-table [dataSource]="dataSource"
+                      [total]="total$ "
+                      (delete)="onDelete($event)"
+                      (quantityChange)="onQuantityChange($event)"></app-cart-table>
+      <div class="footer">
+        <button mat-raised-button
+                color="accent"
+                (click)="onCheckout()">Checkout</button>
+      </div>
+    </div>
+  </div>
+  <ng-template #empty>
+    <h3>Your cart is empty</h3>
+  </ng-template>
+</div>
