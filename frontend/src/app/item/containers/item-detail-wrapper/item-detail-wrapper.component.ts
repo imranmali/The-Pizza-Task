@@ -15,7 +15,6 @@ export class ItemDetailWrapperComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    console.log(this.data);
   }
 
   onAddToCart(idWithAmount) {

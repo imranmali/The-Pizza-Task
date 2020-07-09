@@ -27,7 +27,7 @@ export class ItemListComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.items$ = this.itemService.getItemByKeyword('');
+    this.items$ = this.itemService.getItems();
 
   }
 
@@ -44,6 +44,7 @@ export class ItemListComponent implements OnInit, OnDestroy {
     this.items$ = this.itemService.getItemByKeyword(
       text.toLowerCase()
     );
+    
   }
 
   onShowItemDetail(selectedItem: Item) {

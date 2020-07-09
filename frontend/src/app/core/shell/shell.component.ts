@@ -47,7 +47,6 @@ export class ShellComponent implements OnInit {
       .pipe(pluck('matches'))
       .subscribe((isSmall: boolean) => (this.isSmallScreen = isSmall));
 
-    this.itemService.getItems();
   }
 
   cartClick() {

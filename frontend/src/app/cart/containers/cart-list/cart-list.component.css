@@ -1,0 +1,17 @@
+.wrapper {
+  width: 80%;
+  max-width: 800px;
+  margin: auto;
+}
+
+.footer {
+  margin: 25px 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (max-width: 991px) {
+  .wrapper {
+    width: 90%;
+  }
+}
