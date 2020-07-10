@@ -21,7 +21,7 @@ export class CartTableComponent implements OnInit {
     quantity: number;
   }>();
 
-  displayedColumns: Array<string> = ['title', 'quantity', 'total', 'delete'];
+  displayedColumns: Array<string> = ['title', 'quantity', 'totalEuro','totalUsd', 'delete'];
 
   constructor() {}
 

@@ -14,6 +14,8 @@ import { CustomerInfoComponent } from '../../components/customer-info/customer-i
 import { OrderService } from 'src/app/order/order.service';
 import { Order } from 'src/app/order/order.model';
 import { CheckoutModel } from 'src/app/order/checkout.model';
+import {MatSnackBar } from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-cart-list',
@@ -26,12 +28,17 @@ export class CartListComponent implements OnInit, OnDestroy {
 
   constructor(private cartDataService: CartService,
     private dialog: MatDialog,
-    private orderService: OrderService) { }
+    private orderService: OrderService,
+    private snackBar: MatSnackBar) { 
+
+     
+
+    }
 
   ngOnInit() {
     this.dataSource$ = this.cartDataService.selectItems$;
     this.total$ = this.cartDataService.getSelectTotal();
-  }
+   }
 
   ngOnDestroy() {
   }
@@ -96,6 +103,9 @@ export class CartListComponent implements OnInit, OnDestroy {
           //empty cart
           this.cartDataService.selectItems$ = [];
           this.ngOnInit();
+          this.snackBar.open("Your order has been placed successfull Order Number: "+ data.id, 'Order Sucess', {
+            duration: 3000,
+         });
           
         }
 

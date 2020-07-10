@@ -4,7 +4,9 @@
        [alt]="item.title">
   <mat-card-subtitle>Name: {{ item.title }}</mat-card-subtitle>
   <mat-card-content>
-    <h3>Price: {{ item.price | currency: 'EUR': 'symbol-narrow' : '1.0' }}</h3>
+    <h3>Price: {{ item.price | currency: 'EUR': 'symbol-narrow' : '1.0' }} /
+      {{ (item.price| convert : 'USD') | currency: 'USD': 'symbol-narrow' : '1.0'  }}
+    </h3>
     <p>Category: {{ item.category.name }}</p>
     <p>Description: {{ description }}</p>
   </mat-card-content>

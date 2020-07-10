@@ -30,18 +30,31 @@
     <mat-footer-cell *matFooterCellDef
                      class="center"></mat-footer-cell>
   </ng-container>
-  <ng-container matColumnDef="total">
+  <ng-container matColumnDef="totalEuro">
     <mat-header-cell *matHeaderCellDef
-                     class="center"> Total </mat-header-cell>
+                     class="center"> Total Euro</mat-header-cell>
     <mat-cell *matCellDef="let element"
-              class="right"> 
+              class="center"> 
               {{ ( element.total ) | currency: 'EUR': 'symbol-narrow' : '1.0' }}
     </mat-cell>
     <mat-footer-cell *matFooterCellDef
-                     class="right"> 
+                     class="center"> 
                      {{ total | currency: 'EUR': 'symbol-narrow' : '1.0' }} 
                     </mat-footer-cell>
   </ng-container>
+  <ng-container matColumnDef="totalUsd">
+    <mat-header-cell *matHeaderCellDef
+                     class="center"> Total USD</mat-header-cell>
+    <mat-cell *matCellDef="let element"
+              class="center"> 
+              {{ (element.total| convert : 'USD') | currency: 'USD': 'symbol-narrow' : '1.0'  }}
+    </mat-cell>
+    <mat-footer-cell *matFooterCellDef
+                     class="center"> 
+                     {{ (total| convert : 'USD') | currency: 'USD': 'symbol-narrow' : '1.0'  }}
+                    </mat-footer-cell>
+  </ng-container>
+
   <ng-container matColumnDef="delete">
     <mat-header-cell *matHeaderCellDef
                      class="half right">Remove</mat-header-cell>
