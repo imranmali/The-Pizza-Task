@@ -31,7 +31,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void placeOrder(OrderForm orderForm) {
+    public Orders placeOrder(OrderForm orderForm) {
 
         Orders orders = new Orders();
         orders.setCustomer(orderForm.getCustomer());
@@ -52,5 +52,6 @@ public class OrderServiceImpl implements OrderService {
             orderItemsRepository.save(orderItems);
         });
         logger.info("Order has been made successfully");
+        return orders;
     }
 }
