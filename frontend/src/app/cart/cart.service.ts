@@ -3,6 +3,7 @@ import { map, publishReplay, refCount } from 'rxjs/operators';
 
 import { Item } from '../item/item.model';
 import { CartItem, createCartItem } from './cart.model';
+import { ItemService } from '../item/item.service';
 
 
 @Injectable({
@@ -11,7 +12,7 @@ import { CartItem, createCartItem } from './cart.model';
 export class CartService {
   selectItems$: Array<CartItem> = new Array();
 
-  constructor() { }
+  constructor(private itemService: ItemService) { }
 
   getSelectTotal() {
     return this.selectItems$.reduce((acc, cur) => acc + (cur.quantity * cur.item.price), 0);
@@ -38,12 +39,24 @@ export class CartService {
   resetErrorMessage() {
   }
 
-  addToCart(item, quantity) {
-    this.removeProduct(item.id);
+  addToCart(itemId, quantity) {
+    let item = this.getItemById(itemId);
+    this.removeProduct(itemId);
     let total: number = item.price * quantity;
+
     let careItem: CartItem = createCartItem({ item, quantity, total });
     this.selectItems$.push(careItem);
 
+  }
+
+  getItemById(id) {
+    var item = this.itemService.items.filter(item =>
+      item.id === id
+    );
+    if (item.length > 0)
+      return item[0];
+    else
+      return {};
   }
 
   getItems() {

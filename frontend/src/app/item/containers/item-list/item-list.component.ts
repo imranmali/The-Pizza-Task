@@ -8,6 +8,7 @@ import { LoadingComponent } from '../../../shared/components/loading/loading.com
 import { ItemService } from '../../item.service';
 import { ItemDetailWrapperComponent } from '../item-detail-wrapper/item-detail-wrapper.component';
 import { Item } from '../../item.model';
+import { CartService } from 'src/app/cart/cart.service';
 
 @Component({
   selector: 'app-item-list',
@@ -23,7 +24,8 @@ export class ItemListComponent implements OnInit, OnDestroy {
 
   constructor(
     private itemService: ItemService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private cartService:CartService
   ) {}
 
   ngOnInit() {
@@ -35,6 +37,7 @@ export class ItemListComponent implements OnInit, OnDestroy {
   }
 
   onAddToCart(item: any) {
+    
   }
 
   onRemoveFromCart(item: any) {
@@ -58,7 +61,8 @@ export class ItemListComponent implements OnInit, OnDestroy {
       });
 
       dialogRef.afterClosed().subscribe(result => {
-        
+        // this.onAddToCart(result);
+        this.cartService.addToCart(result.id, result.amount);
       });
     });
   }
