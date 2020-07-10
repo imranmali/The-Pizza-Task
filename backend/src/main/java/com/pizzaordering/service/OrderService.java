@@ -1,10 +1,11 @@
 package com.pizzaordering.service;
 
+import com.pizzaordering.entity.Orders;
 import com.pizzaordering.model.OrderForm;
 
 public interface OrderService {
 
-    public void placeOrder(OrderForm orderForm);
+    public Orders placeOrder(OrderForm orderForm);
 
 
 }

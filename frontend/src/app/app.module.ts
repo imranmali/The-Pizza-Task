@@ -9,8 +9,6 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { HttpClientModule } from '@angular/common/http';
 
-
-
 @NgModule({
   imports: [
     BrowserModule,

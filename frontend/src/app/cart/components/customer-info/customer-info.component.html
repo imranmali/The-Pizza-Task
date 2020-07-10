@@ -1,0 +1,55 @@
+<mat-toolbar >
+    <span class="fill-remaining-space">Please enter info</span>
+  </mat-toolbar>
+  
+  <div class="container" *ngIf="!post; else forminfo" novalidate> 
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)" class="form">
+  
+      <mat-form-field class="form-element">
+        <input matInput placeholder="First Name" formControlName="firstName">
+        <mat-error *ngIf="!formGroup.controls['firstName'].valid && formGroup.controls['firstName'].touched">
+          {{ titleAlert }}
+        </mat-error>
+      </mat-form-field>
+
+       <mat-form-field class="form-element">
+        <input matInput placeholder="Last Name" formControlName="lastName">
+        <mat-error *ngIf="!formGroup.controls['lastName'].valid && formGroup.controls['lastName'].touched">
+          {{ titleAlert }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="form-element">
+        <input matInput placeholder="Phone No." formControlName="phoneNo">
+        <mat-error *ngIf="!formGroup.controls['phoneNo'].valid && formGroup.controls['phoneNo'].touched">
+          {{ titleAlert }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="form-element">
+        <input matInput placeholder="Email Address" formControlName="email">
+        <mat-error *ngIf="!formGroup.controls['email'].valid && formGroup.controls['email'].touched">
+          {{ getErrorEmail() }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="form-element">
+        <textarea matInput placeholder="Address" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5" formControlName="address"></textarea>
+        <mat-error *ngIf="!formGroup.controls['address'].valid && formGroup.controls['address'].touched">
+          Required field, must be between 10 and 50 characters.
+        </mat-error>
+      </mat-form-field>
+    
+  
+      <div class="form-element">
+        <button mat-raised-button color="primary" type="submit" class="button" [disabled]="!formGroup.valid">Place Order</button>
+      </div>
+  
+    </form>
+  </div>
+  
+  <!-- <ng-template #forminfo>
+    <div class="container">
+      {{ post | json }}
+    </div>
+  </ng-template> -->

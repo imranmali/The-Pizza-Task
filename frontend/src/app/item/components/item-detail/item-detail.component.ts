@@ -16,7 +16,7 @@ export class ItemDetailComponent implements OnInit {
 
   private amount: number = 1;
 
-  constructor(private cartService:CartService) {}
+  constructor() {}
 
   ngOnInit() {
   }
@@ -27,7 +27,12 @@ export class ItemDetailComponent implements OnInit {
   }
 
   onAddToCart(item) {
-    this.cartService.addToCart(item,this.amount);
+    // this.addToCart = (item);
+    // this.cartService.addToCart(item,this.amount);
+    this.addToCart.emit({
+      id: item.id,
+      amount: this.amount
+    });
     
   }
 }

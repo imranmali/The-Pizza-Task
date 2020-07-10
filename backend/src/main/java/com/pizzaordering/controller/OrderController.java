@@ -43,11 +43,9 @@ public class OrderController {
 	}
 
 	@PostMapping("/")
-	public ResponseEntity createOrder(@Valid @RequestBody OrderForm orderForm) {
+	public ResponseEntity<Orders> createOrder(@Valid @RequestBody OrderForm orderForm) {
 
-		orderService.placeOrder(orderForm);
-
-		return new ResponseEntity(HttpStatus.OK);
+		return ResponseEntity.ok().body(orderService.placeOrder(orderForm));
 	}
 
 	@DeleteMapping("/{id}")

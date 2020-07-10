@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { Observable, Subject } from 'rxjs';
-import { filter, takeUntil, withLatestFrom } from 'rxjs/operators';
+import { Observable, Subject, of } from 'rxjs';
+import { filter, takeUntil, withLatestFrom, take } from 'rxjs/operators';
 
 import { Item } from '../../../item/item.model';
 import { DialogComponent } from '../../../shared/components/dialog/dialog.component';
@@ -9,6 +9,11 @@ import { LoadingComponent } from '../../../shared/components/loading/loading.com
 import { CartItem } from '../../cart.model';
 import { CartService } from '../../cart.service';
 import { NumberPickerDialogComponent } from './../../../shared/components/number-picker-dialog/number-picker-dialog.component';
+import { ItemDetailWrapperComponent } from 'src/app/item/containers/item-detail-wrapper/item-detail-wrapper.component';
+import { CustomerInfoComponent } from '../../components/customer-info/customer-info.component';
+import { OrderService } from 'src/app/order/order.service';
+import { Order } from 'src/app/order/order.model';
+import { CheckoutModel } from 'src/app/order/checkout.model';
 
 @Component({
   selector: 'app-cart-list',
@@ -18,15 +23,14 @@ import { NumberPickerDialogComponent } from './../../../shared/components/number
 export class CartListComponent implements OnInit, OnDestroy {
   dataSource$: Array<CartItem>;
   total$;
-  loadingDialogRef: MatDialogRef<LoadingComponent>;
-  ngUnsubscribe$ = new Subject();
 
-  constructor(private cartDataService: CartService, private dialog: MatDialog) { }
+  constructor(private cartDataService: CartService,
+    private dialog: MatDialog,
+    private orderService: OrderService) { }
 
   ngOnInit() {
     this.dataSource$ = this.cartDataService.selectItems$;
     this.total$ = this.cartDataService.getSelectTotal();
-   
   }
 
   ngOnDestroy() {
@@ -60,6 +64,44 @@ export class CartListComponent implements OnInit, OnDestroy {
   }
 
   onCheckout() {
-   
+
+    of(this.dataSource$)
+      .pipe(take(1))
+      .subscribe(item => {
+        const dialogRef = this.dialog.open(CustomerInfoComponent, {
+          width: '30%',
+          height: '80%'
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+          if (result)
+            this.onAddToCart(result);
+          //this.cartService.addToCart(result.id, result.amount);
+        });
+      });
+
+  }
+  onAddToCart(result: any) {
+
+    let order = <CheckoutModel>{};
+    order.itemIdsAndQuantities = {};
+    order.customer = result;
+
+    this.dataSource$.forEach(function (item) {
+      order.itemIdsAndQuantities[item.item.id] = item.quantity;
+    });
+    this.orderService.placeOrder(order).subscribe(
+      data => {
+        if (data && data.id){
+          //empty cart
+          this.cartDataService.selectItems$ = [];
+          this.ngOnInit();
+          
+        }
+
+      }
+
+    );
+
   }
 }
