@@ -38,7 +38,7 @@ public class OrderServiceImpl implements OrderService {
         orders.setOrderDate(new Date());
         orders.setPriceEuro(orderForm.getPriceEuro());
         orders.setPriceUsd(orderForm.getPriceUsd());
-
+        orders.setDeliveryCost(orderForm.getDeliveryCost());
         orderRepository.save(orders);
 
 

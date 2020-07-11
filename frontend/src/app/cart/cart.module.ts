@@ -12,6 +12,7 @@ import { CartRoutingModule } from './cart-routing.module';
 import { CartTableComponent } from './components/cart-table/cart-table.component';
 import { CartListComponent } from './containers/cart-list/cart-list.component';
 import { CustomerInfoComponent } from './components/customer-info/customer-info.component';
+import { ConvertPipe } from '../shared/pipe/convert/convert.pipe';
 
 @NgModule({
   imports: [CommonModule, CartRoutingModule, MaterialModule, SharedModule],
@@ -21,6 +22,8 @@ import { CustomerInfoComponent } from './components/customer-info/customer-info.
     LoadingComponent,
     NumberPickerDialogComponent,
     CustomerInfoComponent
-  ]
+  ],
+  providers: [ConvertPipe],
+
 })
 export class CartModule {}

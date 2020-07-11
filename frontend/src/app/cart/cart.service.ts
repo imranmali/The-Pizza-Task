@@ -4,6 +4,7 @@ import { map, publishReplay, refCount } from 'rxjs/operators';
 import { Item } from '../item/item.model';
 import { CartItem, createCartItem } from './cart.model';
 import { ItemService } from '../item/item.service';
+import { of } from 'rxjs';
 
 
 @Injectable({
@@ -21,6 +22,12 @@ export class CartService {
   removeProduct(id: number) {
     this.selectItems$ = this.selectItems$.filter(item => item.item.id !== id);
   }
+
+  getCartLength() {
+    console.log('this.selectItems$.length:'+this.selectItems$.length);
+    return this.selectItems$.length;
+  }
+  cartLength = of(this.selectItems$).pipe(map(item => item.length));
 
   adjustQuantity(id: Item['id'], quantity: number) {
     this.selectItems$ = this.selectItems$.map(item => {

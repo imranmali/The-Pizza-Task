@@ -12,5 +12,6 @@
         customer: Customer;
         priceEuro: number;
         priceUsd: number;
-        itemIdsAndQuantities:any
+        itemIdsAndQuantities:any,
+        deliveryCost:number
     }

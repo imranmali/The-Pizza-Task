@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { pluck } from 'rxjs/operators';
 
 import { ItemService } from '../../item/item.service';
+import { CartService } from 'src/app/cart/cart.service';
 
 @Component({
   selector: 'app-shell',
@@ -38,7 +39,7 @@ export class ShellComponent implements OnInit {
   constructor(
     private breakPointObserver: BreakpointObserver,
     private router: Router,
-    private itemService: ItemService
+    private cartService: CartService
   ) {}
 
   ngOnInit() {
@@ -46,10 +47,14 @@ export class ShellComponent implements OnInit {
       .observe(['(max-width: 991px)'])
       .pipe(pluck('matches'))
       .subscribe((isSmall: boolean) => (this.isSmallScreen = isSmall));
-
   }
 
+  get cartItems() {
+    return this.cartService.selectItems$.length;
+  }
+  
   cartClick() {
+    
     this.router.navigate(['cart']);
   }
 

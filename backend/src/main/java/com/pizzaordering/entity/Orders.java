@@ -25,6 +25,9 @@ public class Orders extends Auditable<String> {
     @Column(columnDefinition = "float default 0")
     private float priceEuro;
 
+    @Column(columnDefinition = "float default 0")
+    private float deliveryCost;
+
     @OneToOne(cascade = {CascadeType.ALL})
     private Customer customer;
 
@@ -84,5 +87,13 @@ public class Orders extends Auditable<String> {
 
     public void setOrderItems(Set<OrderItems> orderItems) {
         this.orderItems = orderItems;
+    }
+
+    public float getDeliveryCost() {
+        return deliveryCost;
+    }
+
+    public void setDeliveryCost(float deliveryCost) {
+        this.deliveryCost = deliveryCost;
     }
 }

@@ -45,8 +45,6 @@ export class CustomerInfoComponent implements OnInit {
   }
 
   onSubmit(formData) {
-    console.log('post'+JSON.stringify( formData));
     this.dialogRef.close(formData);
-
   }
 }

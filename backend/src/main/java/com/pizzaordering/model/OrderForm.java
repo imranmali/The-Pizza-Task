@@ -10,6 +10,7 @@ public class OrderForm {
     private Customer customer;
     private float priceEuro;
     private float priceUsd;
+    private float deliveryCost;
 
     public Map<Long, Integer> getItemIdsAndQuantities() {
         return itemIdsAndQuantities;
@@ -41,5 +42,13 @@ public class OrderForm {
 
     public void setPriceUsd(float priceUsd) {
         this.priceUsd = priceUsd;
+    }
+
+    public float getDeliveryCost() {
+        return deliveryCost;
+    }
+
+    public void setDeliveryCost(float deliveryCost) {
+        this.deliveryCost = deliveryCost;
     }
 }
