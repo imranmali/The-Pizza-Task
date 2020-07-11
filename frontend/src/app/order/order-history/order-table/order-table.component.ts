@@ -15,7 +15,6 @@ export class OrderTableComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    console.log('OrderTableComponent this.orderItems:'+JSON.stringify(this.orderItems));
   }
 
 }

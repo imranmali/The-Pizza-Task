@@ -24,7 +24,6 @@ export class CartService {
   }
 
   getCartLength() {
-    console.log('this.selectItems$.length:'+this.selectItems$.length);
     return this.selectItems$.length;
   }
   cartLength = of(this.selectItems$).pipe(map(item => item.length));
