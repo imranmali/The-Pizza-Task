@@ -27,8 +27,6 @@ export class ItemDetailComponent implements OnInit {
   }
 
   onAddToCart(item) {
-    // this.addToCart = (item);
-    // this.cartService.addToCart(item,this.amount);
     this.addToCart.emit({
       id: item.id,
       amount: this.amount

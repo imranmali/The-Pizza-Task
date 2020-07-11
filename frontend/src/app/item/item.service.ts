@@ -3,6 +3,7 @@ import { EMPTY, Observable, observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Item } from './item.model';
 import { tap, map, filter } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -15,7 +16,7 @@ export class ItemService {
 
   getItems() {
     return this.httpClient.get<Item>(
-      'http://localhost:8099/pizzaTask/api/v1/item/'
+      environment.baseUrl+ 'item/'
     ).pipe(
       tap((receivedData: Item) => { this.items = <Item>receivedData })
     );
@@ -37,9 +38,6 @@ export class ItemService {
 
 
   }
-
-  //  return  EMPTY;
-  // }
 
   getItemById(itemId: number) {
     return EMPTY;

@@ -18,7 +18,7 @@ export function createOrder(items: Array<CartItem & Item>) {
       title: item.title,
       quantity: item.quantity,
       total: item.total,
-      item: item
+      item: item,
     } as OrderItem;
   });
   return {

@@ -15,6 +15,7 @@ import { OrderService } from 'src/app/order/order.service';
 import { Order } from 'src/app/order/order.model';
 import { CheckoutModel } from 'src/app/order/checkout.model';
 import {MatSnackBar } from '@angular/material/snack-bar';
+import { ConvertPipe } from 'src/app/shared/pipe/convert/convert.pipe';
 
 
 @Component({
@@ -29,7 +30,8 @@ export class CartListComponent implements OnInit, OnDestroy {
   constructor(private cartDataService: CartService,
     private dialog: MatDialog,
     private orderService: OrderService,
-    private snackBar: MatSnackBar) { 
+    private snackBar: MatSnackBar,
+    private currencyPipe:ConvertPipe) { 
 
      
 
@@ -83,7 +85,6 @@ export class CartListComponent implements OnInit, OnDestroy {
         dialogRef.afterClosed().subscribe(result => {
           if (result)
             this.onAddToCart(result);
-          //this.cartService.addToCart(result.id, result.amount);
         });
       });
 
@@ -93,6 +94,9 @@ export class CartListComponent implements OnInit, OnDestroy {
     let order = <CheckoutModel>{};
     order.itemIdsAndQuantities = {};
     order.customer = result;
+    order.deliveryCost = 1;
+    order.priceEuro = this.total$;
+    order.priceUsd = this.currencyPipe.transform(order.priceEuro,"USD");
 
     this.dataSource$.forEach(function (item) {
       order.itemIdsAndQuantities[item.item.id] = item.quantity;
@@ -104,7 +108,7 @@ export class CartListComponent implements OnInit, OnDestroy {
           this.cartDataService.selectItems$ = [];
           this.ngOnInit();
           this.snackBar.open("Your order has been placed successfull Order Number: "+ data.id, 'Order Sucess', {
-            duration: 3000,
+            duration: 5000,
          });
           
         }

@@ -9,6 +9,8 @@ import { ItemService } from '../../item.service';
 import { ItemDetailWrapperComponent } from '../item-detail-wrapper/item-detail-wrapper.component';
 import { Item } from '../../item.model';
 import { CartService } from 'src/app/cart/cart.service';
+import { MatSnackBar } from '@angular/material';
+import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-item-list',
@@ -25,7 +27,8 @@ export class ItemListComponent implements OnInit, OnDestroy {
   constructor(
     private itemService: ItemService,
     private dialog: MatDialog,
-    private cartService:CartService
+    private cartService:CartService,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -61,8 +64,10 @@ export class ItemListComponent implements OnInit, OnDestroy {
       });
 
       dialogRef.afterClosed().subscribe(result => {
-        // this.onAddToCart(result);
         this.cartService.addToCart(result.id, result.amount);
+        this.snackBar.open("Item successfully added to cart" , 'Item added', {
+          duration: 5000,
+       });
       });
     });
   }

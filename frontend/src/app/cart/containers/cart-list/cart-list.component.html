@@ -3,10 +3,13 @@
   <div *ngIf="dataSource$  as dataSource">
     <div *ngIf="dataSource.length > 0; else empty">
       <app-cart-table [dataSource]="dataSource"
-                      [total]="total$ "
+                      [total]="total$"
                       (delete)="onDelete($event)"
                       (quantityChange)="onQuantityChange($event)"></app-cart-table>
       <div class="footer">
+        <span class="center bold">Delivery Cost : {{ ( 1 ) | currency: 'EUR': 'symbol-narrow' : '1.0' }} 
+          / {{ (1| convert : 'USD') | currency: 'USD': 'symbol-narrow' : '1.0'  }}
+        </span>
         <button mat-raised-button
                 color="accent"
                 (click)="onCheckout()">Checkout</button>

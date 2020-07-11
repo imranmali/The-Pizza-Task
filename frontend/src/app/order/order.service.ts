@@ -4,36 +4,39 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Order } from './order.model';
 import { tap, map, filter } from 'rxjs/operators';
 import { CheckoutModel } from './checkout.model';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrderService {
+ 
+  readonly serviceAction:string = 'order';
 
   constructor(private httpClient: HttpClient) { }
 
   getOrders() {
     return this.httpClient.get<Order>(
-      'http://localhost:8099/pizzaTask/api/v1/order/all'
+     environment.baseUrl + 'all'
     ).pipe(
       tap((receivedData: Order) => { receivedData })
     );
   }
 
-  placeOrder(order: CheckoutModel) {
+  placeOrder(data: CheckoutModel) {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
     let options = { headers: headers };
     return this.httpClient.post<any>(
-      'http://localhost:8099/pizzaTask/api/v1/order/', order, options
+      environment.baseUrl + this.serviceAction +'/', data, options
     )
   }
 
   getOrderById(orderId: number) {
     return this.httpClient.put<Order>(
-      'http://localhost:8099/pizzaTask/api/v1/order/', orderId
+      environment.baseUrl + this.serviceAction + '/', orderId
     ).pipe(
       tap((receivedData: Order) => { receivedData })
     );
