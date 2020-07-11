@@ -39,25 +39,27 @@ outside the cart and in the cart ✅
 
 #### Database Schema
 
-![Image of screenshot](https://github.com/imranmali/The-Pizza-Task/tree/master/screenshots/db_schema.png)
+![Image of screenshot](https://raw.githubusercontent.com/imranmali/The-Pizza-Task/master/screenshots/db_schema.png)
+
 
 #### Application screenshots
 
 * Item List
-
-![Image of screenshot](https://github.com/imranmali/The-Pizza-Task/tree/master/screenshots/item_list.png)
+![Image of screenshot](https://raw.githubusercontent.com/imranmali/The-Pizza-Task/master/screenshots/item_list.png)
 
 * Item Detail
-![Image of screenshot](https://github.com/imranmali/The-Pizza-Task/tree/master/screenshots/item_detail.PNG)
+![Image of screenshot](https://raw.githubusercontent.com/imranmali/The-Pizza-Task/master/screenshots/item_detail.PNG)
 
 * Cart
-![Image of screenshot](https://github.com/imranmali/The-Pizza-Task/tree/master/screenshots/cart.PNG)
+![Image of screenshot](https://raw.githubusercontent.com/imranmali/The-Pizza-Task/master/screenshots/cart.PNG)
 
 * Customer Info
-![Image of screenshot](https://github.com/imranmali/The-Pizza-Task/tree/master/screenshots/customer_info.PNG)
+![Image of screenshot](https://raw.githubusercontent.com/imranmali/The-Pizza-Task/master/screenshots/customer_info.PNG)
 
 * Order History
-![Image of screenshot](https://github.com/imranmali/The-Pizza-Task/tree/master/screenshots/order_history.PNG)
+![Image of screenshot](https://raw.githubusercontent.com/imranmali/The-Pizza-Task/master/screenshots/order_history.PNG)
+     
+
 
 ### Deployment to the production server
 
