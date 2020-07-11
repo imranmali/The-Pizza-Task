@@ -19,10 +19,6 @@ orders:OrderHistory[];
   constructor(private httpClient: HttpClient) { }
 
   getOrders() {
-    console.log('getorders');
-    // return this.httpClient.get<any>(
-    //  environment.baseUrl + this.serviceAction +'/all'
-    // );
     return this.httpClient.get<OrderHistory[]>(
       environment.baseUrl+ this.serviceAction +'/all'
     ).pipe(
