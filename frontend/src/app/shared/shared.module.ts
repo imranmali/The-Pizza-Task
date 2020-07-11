@@ -10,6 +10,7 @@ import { NumberPickerDialogComponent } from './components/number-picker-dialog/n
 import { NumberPickerComponent } from './components/number-picker/number-picker.component';
 import { CustomerInfoComponent } from '../cart/components/customer-info/customer-info.component';
 import { ConvertPipe } from './pipe/convert/convert.pipe';
+import { SearchBarComponent } from '../item/components/search-bar/search-bar.component';
 
 @NgModule({
   imports: [CommonModule, MaterialModule, SlideshowModule, FormsModule,ReactiveFormsModule],
@@ -19,8 +20,9 @@ import { ConvertPipe } from './pipe/convert/convert.pipe';
     LoadingComponent,
     NumberPickerDialogComponent,
     CustomerInfoComponent,
-    ConvertPipe
+    ConvertPipe,
+    SearchBarComponent
   ],
-  exports: [NumberPickerComponent,ConvertPipe]
+  exports: [NumberPickerComponent,ConvertPipe,SearchBarComponent]
 })
 export class SharedModule {}

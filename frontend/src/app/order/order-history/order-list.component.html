@@ -1,0 +1,10 @@
+<ng-container>
+    <div class="wrapper">
+        <div class="item-container">
+            <div *ngIf="orderItems  as dataSource" class="margin">
+                <app-order-table [orderItems]="dataSource"></app-order-table>
+            </div>
+        </div>
+    </div>
+
+</ng-container>

@@ -64,11 +64,14 @@ export class ItemListComponent implements OnInit, OnDestroy {
       });
 
       dialogRef.afterClosed().subscribe(result => {
-        this.cartService.addToCart(result.id, result.amount);
-        this.snackBar.open("Item successfully added to cart" , 'Item added', {
-          duration: 5000,
-       });
+        if (result && result.id) {
+          this.cartService.addToCart(result.id, result.amount);
+          this.snackBar.open("Item successfully added to cart" , 'Item added', {
+            duration: 5000,
+        });
+      }
       });
+    
     });
   }
 }

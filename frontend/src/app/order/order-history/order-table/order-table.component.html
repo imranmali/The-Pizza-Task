@@ -1,0 +1,37 @@
+<table mat-table [dataSource]="orderItems" class="mat-elevation-z8">
+  <ng-container matColumnDef="title">
+    <mat-header-cell *matHeaderCellDef class="double"> Order Number </mat-header-cell>
+    <mat-cell *matCellDef="let element" class="double"> {{element.id}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="customerName">
+    <mat-header-cell *matHeaderCellDef class="double"> Customer Name </mat-header-cell>
+    <mat-cell *matCellDef="let element" class="double"> {{element.customer.firstName}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="itemQuantity">
+    <mat-header-cell *matHeaderCellDef class="center"> Item Quantity </mat-header-cell>
+    <mat-cell *matCellDef="let element" class="center">{{element.orderItems.length}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="totalEuro">
+    <mat-header-cell *matHeaderCellDef class="center"> Total Euro Price</mat-header-cell>
+    <mat-cell *matCellDef="let element" class="center">
+      {{ element.priceEuro | currency: 'EUR': 'symbol-narrow' : '1.0' }}
+    </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="totalUsd">
+    <mat-header-cell *matHeaderCellDef class="center"> Total USD Price</mat-header-cell>
+    <mat-cell *matCellDef="let element" class="center">
+      {{ element.priceUsd | currency: 'USD': 'symbol-narrow' : '1.0'  }}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="orderDate">
+    <mat-header-cell *matHeaderCellDef class="center"> Order Date</mat-header-cell>
+    <mat-cell *matCellDef="let element" class="center">
+      {{ element.orderDate |  date:'medium' }}
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns" class="header-row"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  <!-- <mat-footer-row *matFooterRowDef="displayedColumns" class="footer-row"></mat-footer-row> -->
+</table>
