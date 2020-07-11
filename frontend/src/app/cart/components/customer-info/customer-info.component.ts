@@ -14,6 +14,7 @@ export class CustomerInfoComponent implements OnInit {
 
   formGroup: FormGroup;
   titleAlert: string = 'This field is required';
+  formData:FormData;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public checkoutModel: CheckoutModel,
