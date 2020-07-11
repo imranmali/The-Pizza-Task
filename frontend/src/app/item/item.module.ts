@@ -25,7 +25,6 @@ import { ItemRoutingModule } from './item-routing.module';
   declarations: [
     ItemListComponent,
     ItemComponent,
-    SearchBarComponent,
     ItemDetailComponent,
     ItemDetailWrapperComponent
   ],

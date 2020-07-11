@@ -58,6 +58,11 @@ export class ShellComponent implements OnInit {
     this.router.navigate(['cart']);
   }
 
+  orderHistory() {
+    
+    this.router.navigate(['order-history']);
+  }
+
   homeClick() {
     this.router.navigate(['']);
   }

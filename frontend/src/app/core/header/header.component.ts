@@ -14,6 +14,9 @@ export class HeaderComponent implements OnInit {
   cartBtnClick = new EventEmitter();
   @Output()
   homeBtnClick = new EventEmitter();
+  @Output()
+  orderHistoryBtnClick = new EventEmitter();
+  
 
   constructor() {}
 

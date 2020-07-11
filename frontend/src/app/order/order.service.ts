@@ -5,6 +5,8 @@ import { Order } from './order.model';
 import { tap, map, filter } from 'rxjs/operators';
 import { CheckoutModel } from './checkout.model';
 import { environment } from 'src/environments/environment';
+import { OrderHistory } from './order-history/order-history.model';
+import { Item } from '../item/item.model';
 
 
 @Injectable({
@@ -13,14 +15,18 @@ import { environment } from 'src/environments/environment';
 export class OrderService {
  
   readonly serviceAction:string = 'order';
-
+orders:OrderHistory[];
   constructor(private httpClient: HttpClient) { }
 
   getOrders() {
-    return this.httpClient.get<Order>(
-     environment.baseUrl + 'all'
+    console.log('getorders');
+    // return this.httpClient.get<any>(
+    //  environment.baseUrl + this.serviceAction +'/all'
+    // );
+    return this.httpClient.get<OrderHistory[]>(
+      environment.baseUrl+ this.serviceAction +'/all'
     ).pipe(
-      tap((receivedData: Order) => { receivedData })
+      tap((receivedData: OrderHistory[]) => { this.orders = receivedData })
     );
   }
 
@@ -41,4 +47,5 @@ export class OrderService {
       tap((receivedData: Order) => { receivedData })
     );
   }
+
 }

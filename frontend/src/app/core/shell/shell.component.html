@@ -3,7 +3,8 @@
     <app-header [cartItem]="cartItems"
                 [ngClass]="{'width-full': isWidthFull, 'width-with-sidenav': isWidthWithSidenav}"
                 (cartBtnClick)="cartClick()"
-                (homeBtnClick)="homeClick()"></app-header>
+                (homeBtnClick)="homeClick()"
+                (orderHistoryBtnClick)="orderHistory()"></app-header>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
